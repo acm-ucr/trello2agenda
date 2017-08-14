@@ -1,0 +1,11 @@
+{
+  "name": "trello2agenda",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/acm-ucr/trello2agenda.git",
+  "author": "Aaroh Mankad <aarohmankad@gmail.com>, John Pham <jpham035@ucr.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}
