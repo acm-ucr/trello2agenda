@@ -38,31 +38,17 @@ for (let c = 0; c < sampleCards.length; c++) {
       matchesId = trelloLists[listIndex].listId == card.idList;
 
     if (matchesId) {
+      let members = card.members.map(member => member.fullName);
+
       trelloLists[listIndex].cards.push({
         name: card.name,
         id: card.id,
         url: card.shortUrl,
-        members: [],
         description: card.desc,
         dateLastActive: card.dateLastActivity,
         dueDate: card.due,
+        members,
       });
-        
-      // TODO:
-      // iterating through members on a card
-      //console.log("---Group---");
-      //let members = [];
-      //for (let m = 0; m < card.members.length; m++) {
-          //console.log(card.members[m].fullName);
-          
-          //members.push({
-              //'name': card.members[m].fullName,
-          //});
-          ////trelloLists[listIndex].cards[c].members.push({
-              ////'name': card.members[m].fullName,
-          ////});
-      //}
-      //trelloLists[listIndex].cards[c].members = members;
     } else {
         ++listIndex;
     }
@@ -78,7 +64,7 @@ trelloLists.forEach(list => {
   list.cards.forEach(card => {
     fs.appendFile(filePath,
       `## ${card.name}:\n` +
-      `* Members Assigned: ${card.members}\n` +
+      `* Members Assigned: ${card.members.join(', ')}\n` +
       `* Description: ${card.description}\n` +
       `* Due Date: ${card.dueDate}\n\n`
       , (error) => {
