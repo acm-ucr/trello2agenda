@@ -1,4 +1,4 @@
 config/
 node_modules/
-export.txt
+export.md
 *.swp
