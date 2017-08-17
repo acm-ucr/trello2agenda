@@ -6,6 +6,7 @@
   "author": "Aaroh Mankad <aarohmankad@gmail.com>, John Pham <jpham035@ucr.edu>",
   "license": "MIT",
   "dependencies": {
+    "googledrive": "^2.0.0",
     "request": "^2.81.0"
   }
 }
