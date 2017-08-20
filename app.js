@@ -54,19 +54,20 @@ for (let c = 0; c < sampleCards.length; c++) {
     }
 }
 
-const filePath = "./export.md";
+const filePath = "./export.md"
+fs.appendFile(filePath, '# ACM Board Meeting Agenda\n');
 
-trelloLists.forEach(list => {
-  fs.appendFile(filePath, `# ${list.name}\n`, (error) => {
+trelloLists.reverse().forEach(list => {
+  fs.appendFile(filePath, `### ${list.name}\n`, (error) => {
     if (error) console.log("Error when writing card data");
   });
-
+  
   list.cards.forEach(card => {
     fs.appendFile(filePath,
-      `## ${card.name}:\n` +
-      `* Members Assigned: ${card.members.join(', ')}\n` +
-      `* Description: ${card.description}\n` +
-      `* Due Date: ${card.dueDate}\n\n`
+      `**${card.name}:**\n` +
+      `* **Members Assigned:** ${card.members.join(', ')}\n` +
+      `* **Description:** ${card.description}\n` +
+      `* **Due Date:** ${card.dueDate}\n\n`
       , (error) => {
           if (error) console.log("Error when writing card data");
       });
